@@ -15,5 +15,5 @@ WORKDIR /adjust/src
 # Expose docker port 80
 EXPOSE 80
 
-
-CMD ["ruby","webserver.rb"] 
+# Trigger ruby webserver
+CMD ["ruby","webserver.rb"]
