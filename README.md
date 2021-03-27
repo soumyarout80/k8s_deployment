@@ -6,8 +6,10 @@
 * [Docker](Dockerfile)
 * [Jenkinsfile](Jenkinsfile)
 * [Kubernetes deployment](kubernetes/deployment.yml)
-* [Kubernetes ingress](kubernetes/deployment.yml)
+* [Kubernetes service](kubernetes/service.yml)
+* [Kubernetes ingress](kubernetes/ingress.yml)
 * [Ansible playbook](Ansible/docker_build_push.yml)
+* [Ruby project](src/http_server.rb)
 
 ## Manual Deployment
 
@@ -19,4 +21,5 @@ kubectl -n openstad apply -f deployment.yml
 ```
 
 ## Jenkins pipeline
+
 ![Jenkins pipeline](/images/pipeline.jpeg)
