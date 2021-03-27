@@ -17,3 +17,6 @@ Use the below commands to deploy ingress and app.
 kubectl -n openstad apply -f ingress.yml 
 kubectl -n openstad apply -f deployment.yml
 ```
+
+## Jenkins pipeline
+![Jenkins pipeline](/images/pipeline.jpeg)
