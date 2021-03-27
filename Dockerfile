@@ -1,10 +1,19 @@
-FROM ruby:2.5
+FROM ruby:2.5.5-alpine
 
-# throw errors if Gemfile has been modified since Gemfile.lock
+# Throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
-WORKDIR /usr/src/app
+# Set current working directory `/usr/app`
+WORKDIR /adjust
 
-COPY  http_server.rb .
+# Copy ruby project to app dir
+COPY  src .
 
-CMD ["./http_server.rb"]
+# Set current working directory `/usr/app/src`
+WORKDIR /adjust/src
+
+# Expose docker port 80
+EXPOSE 80
+
+
+CMD ["ruby","webserver.rb"] 
