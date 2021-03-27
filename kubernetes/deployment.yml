@@ -23,5 +23,5 @@ spec:
         - name: APP_HOST
           value: api
         - name: APP_PORT
-          value: "8111"
+          value: "8080"
       restartPolicy: Always
