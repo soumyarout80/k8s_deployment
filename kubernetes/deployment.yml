@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deploy
+  namespace: adjust
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: openstad-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: openstad-api
+    spec:
+      containers:
+      - env:
+        - name: APP_HOST
+          value: api
+        - name: APP_PORT
+          value: "8111"
+      restartPolicy: Always
