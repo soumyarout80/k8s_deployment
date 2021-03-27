@@ -22,4 +22,4 @@ kubectl -n openstad apply -f deployment.yml
 
 ### Jenkins pipeline
 
-![Jenkins pipeline](/images/pipeline.jpeg)
+![Jenkins pipeline](/images/k8s.jpg)
