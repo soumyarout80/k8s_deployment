@@ -1,4 +1,6 @@
-node {
+#!/usr/bin/env groovy
+
+pipeline {
  	// Clean workspace before doing anything
     deleteDir()
 
@@ -14,11 +16,10 @@ node {
 		// 	}
 		// }
 		stage ('Docker Build and Docker Push') {
-				sh "pwd"
-				dir('k8s_deployment') 
-				sh "pwd"
-			
-        	sh "ansible-playbook ansible/docker_build.yml"
+			steps{
+				sh "cd k8s_deployment/ansible"
+				sh "ansible-playbook docker_build.yml"
+			}	
         }
 
         stage ('Tests') {
