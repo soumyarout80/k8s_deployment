@@ -3,8 +3,10 @@
 pipeline {
 	stages {
         stage ('Checkout') {
+			steps{
         	checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[ url: 'https://github.com/soumyarout80/k8s_deployment.git']]])
         }
+	}
 		// stage('Test') {
 		// 	steps {
 		// 		echo "$DOCKER_IMAGE" // will print selected image name with tag (eg. jenkins/jenkins:lts-jdk11)
@@ -31,7 +33,9 @@ pipeline {
 	        }
         }
       	stage ('Kubernetes Deploy') {
-            sh "echo 'shell scripts to deploy to server...'"
+			  steps{
+            	sh "echo 'shell scripts to deploy to server...'"
+			  }
       	} 
 	}
 }
