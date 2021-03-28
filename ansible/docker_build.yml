@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Build and image and push it to docker hub or registry
+      community.docker.docker_image:
+        build:
+          path: ..
+        name: adjust
+        repository: soumyarout80/task_adjust
+        tag: 1.0.1
+        push: yes
+        source: build
