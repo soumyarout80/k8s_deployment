@@ -1,6 +1,10 @@
 #!/usr/bin/env groovy
 
 pipeline {
+    environment {
+		registry = "docker pull soumyarout80/task_adjust"
+		registryCredential = '******'
+	}
 	agent { label 'master' }
 
 	stages {
@@ -10,9 +14,14 @@ pipeline {
         }
 	}
 		stage ('Docker Build and Docker Push') {
+		    steps{
+              script {
+                sh "docker log -u soumyarout80 -p *******"
+              }
+            }
 			steps{
-				sh "cd k8s_deployment/ansible"
-				sh "ansible-playbook docker_build.yml"
+			    sh "pwd"
+				sh "ansible-playbook ansible/docker_build.yml"
 			}	
         }
 
