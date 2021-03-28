@@ -1,10 +1,6 @@
 #!/usr/bin/env groovy
 
 pipeline {
- 	// Clean workspace before doing anything
-    deleteDir()
-
-    try {
         stage ('Checkout') {
         	checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[ url: 'https://github.com/soumyarout80/k8s_deployment.git']]])
         }
@@ -35,9 +31,5 @@ pipeline {
         }
       	stage ('Kubernetes Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
-      	}
-    } catch (err) {
-        currentBuild.result = 'FAILED'
-        throw err
-    }
+      	} 
 }
