@@ -42,7 +42,7 @@ pipeline {
 
       	stage ('Kubernetes Deploy') {
 			  steps{
-            	sh "echo 'shell scripts to deploy to server...'"
+            	sh "ansible-playbook ansible/main.yml"
 			  }
       	} 
 	}
