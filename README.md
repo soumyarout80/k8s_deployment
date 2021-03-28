@@ -26,3 +26,21 @@ kubectl apply -f service.yml
 ### Jenkins pipeline
 
 ![Jenkins pipeline](/images/k8s.jpg)
+
+### Docker image repository
+```bash
+docker pull soumyarout80/task_adjust:latest
+```
+
+### Trigger by ansible
+```bash
+ansible-playbook ansible/docker_build.yml
+ansible-playbook ansible/docker_latest_tag.yml
+ansible-playbook ansible/main.yml
+```
+
+### Author
+
+> **Name**: Soumya Ranjan Rout
+
+> **Email**: soumyarout80@gmail.com
