@@ -1,0 +1,65 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  vars:
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+    image_name: soumyarout80/task_adjust:latest
+
+  tasks:
+    # Create Kubernetes resources to run adjust task.
+    - name: Create a Deployment for adjust task.
+      k8s:
+        state: present
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: adjust-api
+            namespace: adjust
+          spec:
+            replicas: 4
+            selector:
+              matchLabels:
+                app: adjust-api
+            strategy:
+              rollingUpdate:
+                maxSurge: 25%
+                maxUnavailable: 25%
+              type: RollingUpdate
+            template:
+              metadata:
+                labels:
+                  app: adjust-api
+              spec:
+                containers:
+                - name: adjust-api
+                  image: "{{ image_name }}"
+                  resources:
+                    requests:
+                      cpu: 10m
+                      memory: 256Mi
+                    limits:
+                      cpu: 200m
+                      memory: 512Mi
+                  ports:
+                  - containerPort: 80
+                    name: http
+                    protocol: TCP
+
+    - name: Create a Service for adjust web server.
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: adjust-api
+            namespace: adjust
+          spec:
+            type: ClusterIP
+            ports:
+            - port: 80
+              targetPort: 80
+            selector:
+              app: adjust-api
