@@ -21,17 +21,17 @@ pipeline {
 			}	
         }
 
-        stage ('Tests') {
-	        parallel 'static': {
-	            sh "echo 'shell scripts to run static tests...'"
-	        },
-	        'unit': {
-	            sh "echo 'shell scripts to run unit tests...'"
-	        },
-	        'integration': {
-	            sh "echo 'shell scripts to run integration tests...'"
-	        }
-        }
+        // stage ('Tests') {
+	    //     parallel 'static': {
+	    //         sh "echo 'shell scripts to run static tests...'"
+	    //     },
+	    //     'unit': {
+	    //         sh "echo 'shell scripts to run unit tests...'"
+	    //     },
+	    //     'integration': {
+	    //         sh "echo 'shell scripts to run integration tests...'"
+	    //     }
+        // }
       	stage ('Kubernetes Deploy') {
 			  steps{
             	sh "echo 'shell scripts to deploy to server...'"
