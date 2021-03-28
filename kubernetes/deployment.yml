@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-deploy
+  name: adjust-api
   namespace: adjust
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
-      app: openstad-api
+      app: adjust-api
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -16,12 +16,20 @@ spec:
   template:
     metadata:
       labels:
-        app: openstad-api
+        app: adjust-api
     spec:
       containers:
-      - env:
-        - name: APP_HOST
-          value: api
-        - name: APP_PORT
-          value: "8080"
+      - name: adjust-api
+        image: soumyarout80/task_adjust:tagname
+        resources:
+          requests:
+            cpu: 10m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
       restartPolicy: Always
