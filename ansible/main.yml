@@ -6,6 +6,16 @@
     image_name: soumyarout80/task_adjust:latest
 
   tasks:
+    # Create Kubernetes namespace to run adjust task.
+    - name: Create a Service for adjust web server.
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: adjust
+            
     # Create Kubernetes resources to run adjust task.
     - name: Create a Deployment for adjust task.
       k8s:
