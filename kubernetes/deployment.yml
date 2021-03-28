@@ -21,6 +21,20 @@ spec:
       containers:
       - name: adjust-api
         image: soumyarout80/task_adjust:latest
+        readinessProbe:  
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 80
+            httpHeaders:
+            - name: Custom-Header
+              value: OK
+          initialDelaySeconds: 15
+          periodSeconds: 20
         resources:
           requests:
             cpu: 10m
