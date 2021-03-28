@@ -1,4 +1,4 @@
-kubectl -n openstad apply -f ingress.yml
-kubectl -n openstad apply -f namespace.yml
-kubectl -n openstad apply -f deployment.yml
-kubectl -n openstad apply -f service.yml
+kubectl apply -f ingress.yml
+kubectl apply -f namespace.yml
+kubectl apply -f deployment.yml
+kubectl apply -f service.yml
