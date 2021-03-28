@@ -14,13 +14,10 @@ node {
 		// 	}
 		// }
 		stage ('Docker Build and Docker Push') {
-			steps {
 				sh "pwd"
-				dir('k8s_deployment') {
+				dir('k8s_deployment') 
 				sh "pwd"
-				}
-			}
-			sh "cd k8s_deployment"
+			
         	sh "ansible-playbook ansible/docker_build.yml"
         }
 
