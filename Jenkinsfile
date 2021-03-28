@@ -6,9 +6,15 @@ node {
         stage ('Clone') {
         	checkout scm
         }
-        stage ('Build') {
+
+        stage ('Docker Build') {
         	sh "echo 'shell scripts to build project...'"
         }
+
+		stage ('Docker Push') {
+        	sh "echo 'shell scripts to build project...'"
+        }
+
         stage ('Tests') {
 	        parallel 'static': {
 	            sh "echo 'shell scripts to run static tests...'"
@@ -20,7 +26,7 @@ node {
 	            sh "echo 'shell scripts to run integration tests...'"
 	        }
         }
-      	stage ('Deploy') {
+      	stage ('Kubernetes Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
       	}
     } catch (err) {
