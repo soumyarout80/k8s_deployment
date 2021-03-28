@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: adjust-api
-        image: soumyarout80/task_adjust:tagname
+        image: soumyarout80/task_adjust:latest
         resources:
           requests:
             cpu: 10m
