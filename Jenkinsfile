@@ -3,8 +3,8 @@ node {
     deleteDir()
 
     try {
-        stage ('Clone') {
-        	checkout scm
+        stage ('Checkout') {
+        	checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[ url: 'https://github.com/soumyarout80/k8s_deployment.git']]])
         }
 
         stage ('Docker Build') {
