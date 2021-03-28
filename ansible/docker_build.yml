@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
     - name: Build and image and push it to docker hub or registry
-      community.docker.docker_image:
+      docker_image:
         build:
           path: ..
         name: adjust
