@@ -8,7 +8,8 @@
 * [Kubernetes deployment](kubernetes/deployment.yml)
 * [Kubernetes service](kubernetes/service.yml)
 * [Kubernetes ingress](kubernetes/ingress.yml)
-* [Ansible playbook](ansible/docker_build_push.yml)
+* [Ansible playbook k8s deployment](ansible/main.yml)
+* [Ansible playbook docker latest tag](ansible/docker_latest_tag.yml)
 * [Ruby project](src/http_server.rb)
 
 ### Manual Deployment 
