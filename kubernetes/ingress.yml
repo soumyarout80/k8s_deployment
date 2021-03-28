@@ -8,15 +8,15 @@ metadata:
     kubernetes.io/ingress.class: internal
     nginx.ingress.kubernetes.io/rewrite-target: /
   generation: 1
-  name: <user-defined-ingress-name>
+  name: adjust-ingress
 spec:
   rules:
   - host: <specify your cname (the website name)>
     http:
       paths:
       - backend:
-          serviceName: <specify the service name, you can get this by running kubectl get svc>
-          servicePort: <specify the port number of your application>
+          serviceName: adjust-api
+          servicePort: 80
         path: /
 status:
   loadBalancer:
