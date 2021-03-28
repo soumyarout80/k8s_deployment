@@ -4,7 +4,7 @@ metadata:
   name: adjust-api
   namespace: adjust
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: adjust-api
@@ -21,20 +21,6 @@ spec:
       containers:
       - name: adjust-api
         image: soumyarout80/task_adjust:latest
-        readinessProbe:  
-          tcpSocket:
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /healthcheck
-            port: 80
-            httpHeaders:
-            - name: Custom-Header
-              value: OK
-          initialDelaySeconds: 15
-          periodSeconds: 20
         resources:
           requests:
             cpu: 10m
@@ -46,4 +32,3 @@ spec:
         - containerPort: 80
           name: http
           protocol: TCP
-      restartPolicy: Always
