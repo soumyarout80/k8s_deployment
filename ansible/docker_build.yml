@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   gather_facts: false
+  become: yes
   tasks:
     - name: Build and image and push it to docker hub or registry
       docker_image:
