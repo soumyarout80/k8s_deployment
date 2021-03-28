@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: Build image with latest tag for stable build and push it to docker hub or registry
+      docker_image:
+        build:
+          path: ..
+        name: adjust
+        repository: soumyarout80/task_adjust
+        tag: latest
+        push: yes
+        source: build
