@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline {
+	stages {
         stage ('Checkout') {
         	checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[ url: 'https://github.com/soumyarout80/k8s_deployment.git']]])
         }
@@ -32,4 +33,5 @@ pipeline {
       	stage ('Kubernetes Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
       	} 
+	}
 }
