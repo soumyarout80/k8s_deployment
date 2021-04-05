@@ -44,3 +44,6 @@ ansible-playbook ansible/main.yml
 > **Name**: Soumya Ranjan Rout
 
 > **Email**: soumyarout80@gmail.com
+
+### License
+![MIT license](LICENSE.md)
