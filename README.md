@@ -1,6 +1,8 @@
 # k8s_deployment :rocket:
 > Automating the deployment process pipeline, to containerize and deploy the application to Kubernetes.
 
+![Continuous Integration](https://github.com/GoogleCloudPlatform/microservices-demo/workflows/Continuous%20Integration%20-%20Master/Release/badge.svg)
+
 ### Project Structure and deployment pipeline files! :sparkles:
 
 * [Docker](Dockerfile)
